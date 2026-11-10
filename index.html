@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#090909" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="description" content="ACM Fitness mobile app front-end prototype." />
+    <title>ACM Fitness Mobile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+    <script src="zxing-browser.min.js" defer></script>
+    <script src="scan.js" defer></script>
+  </head>
+  <body>
+    <div class="app-frame">
+      <section class="auth-screen screen is-active" data-screen="auth" aria-labelledby="auth-title">
+        <header class="auth-topbar">
+          <span class="prototype-pill">Mobile prototype</span>
+          <button class="icon-button theme-button" data-theme-toggle aria-label="Switch to light mode">
+            <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
+          </button>
+        </header>
+        <div class="auth-hero">
+          <div class="auth-glow"></div>
+          <img src="assets/acm-mark.png" class="auth-logo" alt="ACM Fitness" />
+          <p class="eyebrow">MOVE · FUEL · GROW</p>
+          <h1 id="auth-title">Your strongest self,<br /><em>every day.</em></h1>
+          <p class="auth-subtitle">Training, nutrition, and the people who keep you moving—all in one place.</p>
+        </div>
+        <div class="auth-actions">
+          <button class="social-button" data-provider="Google">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.23c0-.71-.06-1.4-.18-2.06H12v3.9h5.38a4.6 4.6 0 0 1-2 3.02v2.53h3.24c1.9-1.75 2.98-4.33 2.98-7.39Z"/><path fill="#34A853" d="M12 22c2.7 0 4.97-.9 6.62-2.38l-3.24-2.53c-.9.6-2.05.96-3.38.96-2.61 0-4.82-1.76-5.61-4.13H3.04v2.61A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.39 13.92A6 6 0 0 1 6.07 12c0-.67.12-1.32.32-1.92V7.47H3.04A10 10 0 0 0 2 12c0 1.61.39 3.14 1.04 4.53l3.35-2.61Z"/><path fill="#EA4335" d="M12 5.95c1.47 0 2.79.5 3.83 1.5l2.87-2.87A9.63 9.63 0 0 0 12 2a10 10 0 0 0-8.96 5.47l3.35 2.61C7.18 7.71 9.39 5.95 12 5.95Z"/></svg>
+            <span>Continue with Google</span><span>→</span>
+          </button>
+          <button class="social-button" data-provider="Apple">
+            <svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.79 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.1ZM12.03 7.25C11.88 5.02 13.69 3.18 15.77 3c.29 2.58-2.34 4.5-3.74 4.25Z"/></svg>
+            <span>Continue with Apple</span><span>→</span>
+          </button>
+          <div class="or"><span>or</span></div>
+          <div class="split-actions">
+            <button data-provider="Email"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>Email</button>
+            <button data-provider="Phone"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>Phone</button>
+          </div>
+          <button class="demo-link" data-enter-app>Explore the front-end demo <span>↗</span></button>
+          <p class="terms">By continuing, you agree to the Terms and Privacy Policy.</p>
+        </div>
+      </section>
+
+      <section class="main-app screen" data-screen="app" aria-label="ACM mobile dashboard">
+        <main class="app-content">
+          <section class="app-view is-active" data-view="home" aria-labelledby="home-title">
+            <header class="app-header">
+              <div><p class="overline">Wednesday, October 14</p><h1 id="home-title">Good morning, <em>Eitan.</em></h1></div>
+              <button class="avatar-button" data-nav-target="profile" aria-label="Open profile">EG<span></span></button>
+            </header>
+
+            <article class="daily-card">
+              <div class="daily-head"><div><span>Daily score</span><strong>On track</strong></div><button class="more-button" aria-label="More options">•••</button></div>
+              <div class="score-layout">
+                <div class="score-ring" style="--progress: 78"><div><strong>78</strong><span>/ 100</span></div></div>
+                <div class="score-details">
+                  <div><span class="metric-icon fire">⌁</span><p><strong>1,640</strong><small>of 2,200 kcal</small></p></div>
+                  <div><span class="metric-icon steps">↗</span><p><strong>7,428</strong><small>of 10,000 steps</small></p></div>
+                  <div><span class="metric-icon water">◒</span><p><strong>5</strong><small>of 8 cups</small></p></div>
+                </div>
+              </div>
+              <div class="week-strip" aria-label="Weekly streak">
+                <span class="done">M<i>✓</i></span><span class="done">T<i>✓</i></span><span class="today">W<i>14</i></span><span>T<i>15</i></span><span>F<i>16</i></span><span>S<i>17</i></span><span>S<i>18</i></span>
+              </div>
+            </article>
+
+            <div class="section-heading"><div><span class="kicker">Up next</span><h2>Today’s workout</h2></div><button data-nav-target="train">View plan</button></div>
+            <article class="workout-card" data-nav-target="train">
+              <div class="workout-art">
+                <div class="art-grid"></div><div class="athlete"><span class="head"></span><span class="body"></span><span class="arm arm-a"></span><span class="arm arm-b"></span><span class="leg leg-a"></span><span class="leg leg-b"></span><span class="bar"></span></div>
+                <span class="ai-pill">✦ AI planned</span><span class="duration-pill">48 min</span>
+              </div>
+              <div class="workout-info"><div><span>Lower body · strength</span><h3>Power foundations</h3><p>6 exercises · Intermediate</p></div><span class="round-arrow">→</span></div>
+            </article>
+
+            <div class="section-heading"><div><span class="kicker">Quick actions</span><h2>Keep moving</h2></div></div>
+            <div class="quick-grid">
+              <button data-action="scan"><span class="quick-icon scan-icon"><svg viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M8 12h8"/></svg></span><strong>Scan food</strong><small>Camera or barcode</small></button>
+              <button data-action="log"><span class="quick-icon log-icon">＋</span><strong>Log workout</strong><small>Track your sets</small></button>
+              <button data-action="form"><span class="quick-icon form-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="m12 7-2 5 3 2 2-4m-5 2-3 3m6-1-1 6m3-10 3 2"/></svg></span><strong>Check form</strong><small>Open the camera</small></button>
+            </div>
+
+            <div class="section-heading"><div><span class="kicker">Your circle</span><h2>Friends in motion</h2></div><button data-nav-target="social">See all</button></div>
+            <div class="friend-row">
+              <article><div class="friend-avatar amber">MC<span></span></div><div><strong>Maya</strong><small>Finished a 5K run</small></div><button data-cheer>⚡ 24</button></article>
+              <article><div class="friend-avatar slate">JL<span></span></div><div><strong>Jordan</strong><small>Hit a 10-day streak</small></div><button data-cheer>🔥 18</button></article>
+            </div>
+          </section>
+
+          <section class="app-view" data-view="train" aria-labelledby="train-title">
+            <header class="simple-header"><div><p class="overline">Your program</p><h1 id="train-title">Train</h1></div><button class="icon-button" data-action="calendar" aria-label="Calendar"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></button></header>
+            <article class="plan-banner"><span class="kicker">Week 3 of 6</span><h2>Strength foundations</h2><p>Consistency is your advantage. You’re 72% through this week.</p><div class="progress"><span style="width:72%"></span></div></article>
+            <div class="section-heading"><div><span class="kicker">Today · Lower body</span><h2>6 exercises</h2></div><button data-action="swap">Swap</button></div>
+            <div class="exercise-list">
+              <article><span>01</span><div><strong>Front squat</strong><small>4 sets × 6 reps</small></div><button>›</button></article>
+              <article><span>02</span><div><strong>Romanian deadlift</strong><small>3 sets × 8 reps</small></div><button>›</button></article>
+              <article><span>03</span><div><strong>Walking lunge</strong><small>3 sets × 12 reps</small></div><button>›</button></article>
+              <article><span>04</span><div><strong>Standing calf raise</strong><small>3 sets × 15 reps</small></div><button>›</button></article>
+            </div>
+            <button class="primary-button" data-action="start">Start workout <span>→</span></button>
+          </section>
+
+          <section class="app-view" data-view="scan" aria-labelledby="scan-title">
+            <header class="simple-header"><div><p class="overline">Nutrition</p><h1 id="scan-title">Add food</h1></div><button class="icon-button" data-action="history" aria-label="History"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg></button></header>
+            <div class="scan-switch" role="tablist" aria-label="Scan method"><button type="button" class="is-selected" data-scan-mode="barcode" role="tab" aria-selected="true">Barcode</button><button type="button" data-scan-mode="plate" role="tab" aria-selected="false">Plate photo</button></div>
+            <section class="scan-panel" data-scan-panel="barcode" aria-label="Barcode scanner">
+              <div class="scan-intro"><span class="scan-glyph">▦</span><h2>Scan a food label</h2><p>Use your camera or enter the numbers under the barcode. Nutrition comes from Open Food Facts.</p></div>
+              <div class="camera-wrap" data-camera-wrap hidden><video id="barcode-video" playsinline muted aria-label="Live barcode camera"></video><div class="camera-guide"></div></div>
+              <button class="scan-main-button" type="button" id="barcode-camera">Start barcode camera</button>
+              <form id="barcode-form" class="barcode-form"><label for="barcode-input">Barcode number</label><div><input id="barcode-input" inputmode="numeric" pattern="[0-9]{8,14}" placeholder="e.g. 3017624010701" autocomplete="off" required><button type="submit">Look up</button></div></form>
+              <p class="scan-status" id="barcode-status" role="status"></p>
+            </section>
+            <section class="scan-panel" data-scan-panel="plate" aria-label="Plate photo scanner" hidden>
+              <div class="scan-intro"><span class="scan-glyph">◉</span><h2>What’s on your plate?</h2><p>Take or upload a clear photo. We’ll estimate each food and the macros for the entire plate.</p></div>
+              <label class="photo-picker" for="plate-photo"><span>＋</span><strong>Take or choose a photo</strong><small>JPG, PNG, or WebP · up to 8 MB</small></label><input id="plate-photo" type="file" accept="image/jpeg,image/png,image/webp" capture="environment" hidden>
+              <img id="plate-preview" class="plate-preview" alt="Selected plate" hidden>
+              <button class="scan-main-button" type="button" id="analyze-plate" disabled>Estimate plate macros</button>
+              <p class="scan-status" id="plate-status" role="status">Photo estimates are approximate. Check the foods and portions before logging.</p>
+            </section>
+            <section class="scan-results" id="scan-results" aria-live="polite" hidden></section>
+            <div class="section-heading"><div><span class="kicker">Or add manually</span><h2>Quick log</h2></div></div>
+            <div class="log-options"><button id="open-food-search" type="button" aria-expanded="false" aria-controls="food-search"><span>⌕</span><div><strong>Search foods</strong><small>Look up a product by name</small></div><b>›</b></button><button data-action="meal"><span>☆</span><div><strong>Create a meal</strong><small>Save your frequent combinations</small></div><b>›</b></button></div>
+            <section id="food-search" class="scan-panel food-search" aria-label="Search foods" hidden><form id="food-search-form" class="barcode-form"><label for="food-search-input">Food or brand</label><div><input id="food-search-input" type="search" placeholder="e.g. Greek yogurt" minlength="2" maxlength="80" required><button type="submit">Search</button></div></form><p id="food-search-status" class="scan-status" role="status">Search packaged foods in Open Food Facts.</p><div id="food-search-results" class="food-search-results"></div></section>
+          </section>
+
+          <section class="app-view" data-view="social" aria-labelledby="social-title">
+            <header class="simple-header"><div><p class="overline">Community</p><h1 id="social-title">Your circle</h1></div><button class="icon-button" data-action="add-friend" aria-label="Add friend">＋</button></header>
+            <article class="challenge-card"><span class="kicker">October challenge</span><h2>Move for 300 minutes</h2><div class="challenge-stats"><div><strong>218</strong><small>minutes</small></div><div class="mini-ring">73%</div></div><p>You’re ahead of 12 friends. Keep going.</p></article>
+            <div class="section-heading"><div><span class="kicker">Leaderboard</span><h2>This week</h2></div><button data-action="invite">Invite</button></div>
+            <div class="leader-list"><article><span class="medal">1</span><span class="friend-avatar amber">MC</span><div><strong>Maya Chen</strong><small>7 workouts</small></div><b>4,820</b></article><article><span class="medal">2</span><span class="friend-avatar slate">JL</span><div><strong>Jordan Lee</strong><small>6 workouts</small></div><b>4,570</b></article><article class="you"><span class="medal">3</span><span class="friend-avatar orange">YOU</span><div><strong>You</strong><small>5 workouts</small></div><b>4,320</b></article><article><span class="medal">4</span><span class="friend-avatar cream">AR</span><div><strong>Alex Rivera</strong><small>5 workouts</small></div><b>4,060</b></article></div>
+          </section>
+
+          <section class="app-view" data-view="profile" aria-labelledby="profile-title">
+            <header class="simple-header"><div><p class="overline">Account</p><h1 id="profile-title">Profile</h1></div><button class="icon-button theme-button" data-theme-toggle aria-label="Switch theme"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg></button></header>
+            <div class="profile-hero"><div class="big-avatar">EG<span></span></div><h2>Eitan Galindo</h2><p>Building strength · 12 day streak</p></div>
+            <div class="profile-stats"><div><strong>18</strong><small>Workouts</small></div><div><strong>7.4k</strong><small>Avg. steps</small></div><div><strong>12</strong><small>Day streak</small></div></div>
+            <div class="settings-list"><button data-action="goals"><span>◎</span><div><strong>Goals & preferences</strong><small>Build muscle · Intermediate</small></div><b>›</b></button><button data-action="equipment"><span>⌂</span><div><strong>My equipment</strong><small>Commercial gym</small></div><b>›</b></button><button data-action="notifications"><span>◌</span><div><strong>Notifications</strong><small>Streaks, workouts, friends</small></div><b>›</b></button><button data-sign-out><span>↙</span><div><strong>Back to sign in</strong><small>Return to the prototype start</small></div><b>›</b></button></div>
+          </section>
+        </main>
+
+        <nav class="bottom-nav" aria-label="App navigation">
+          <button class="is-active" data-tab="home"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg><span>Home</span></button>
+          <button data-tab="train"><svg viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M3 9v6M21 9v6M6 12h12"/></svg><span>Train</span></button>
+          <button class="scan-tab" data-tab="scan"><i><svg viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M8 12h8"/></svg></i><span>Scan</span></button>
+          <button data-tab="social"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2"/><path d="M3 20c0-4 2-6 6-6s6 2 6 6M15 14c3 0 5 2 5 5"/></svg><span>Social</span></button>
+          <button data-tab="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-5 3-7 8-7s8 2 8 7"/></svg><span>Profile</span></button>
+        </nav>
+      </section>
+      <div class="toast" role="status" aria-live="polite" data-toast></div>
+    </div>
+  </body>
+</html>
